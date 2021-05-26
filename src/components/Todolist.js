@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../contexts/TodoContext'
 import Tododetails from './Tododetails'
 
 function Todolist() {
-  const todos = [
-    { id: 1, title: 'title1' },
-    { id: 2, title: 'title2' },
-  ]
+  const { todos } = useContext(TodoContext)
 
   return todos.length ? (
     <div>

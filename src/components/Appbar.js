@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../contexts/TodoContext'
 
 function Appbar() {
-  const todos = [
-    { id: 1, title: 'title1' },
-    { id: 2, title: 'title2' },
-  ]
+  const { todos } = useContext(TodoContext)
 
   return (
     <div>
       <h1>{'Duty helper'.toUpperCase()}</h1>
-      <p>There are {todos.length} waiting...</p>
+      <h3>{'Get things done'.toUpperCase()}</h3>
+      <p>There are {todos.length} duties waiting...</p>
     </div>
   )
 }
