@@ -15,7 +15,7 @@ function Todoform() {
     <>
       {!isUpdate && (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="tilte">Title</label>
+          <label htmlFor="tilte">New Duty: </label>
           <input
             type="text"
             id="title"

@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <TodoContextProvider>
         <Appbar />
-        <Todolist />
         <Todoform />
+        <Todolist />
       </TodoContextProvider>
     </div>
   )
