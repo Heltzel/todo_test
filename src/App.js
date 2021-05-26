@@ -4,15 +4,21 @@ import Todoform from './components/Todoform'
 import Todolist from './components/Todolist'
 import TodoContextProvider from './contexts/TodoContext'
 
+import { Card, CardContent, Container } from '@material-ui/core'
+
 function App() {
   return (
-    <div className="App">
-      <TodoContextProvider>
-        <Appbar />
-        <Todoform />
-        <Todolist />
-      </TodoContextProvider>
-    </div>
+    <Container maxWidth="sm" className="App">
+      <Card>
+        <CardContent>
+          <TodoContextProvider>
+            <Appbar />
+            <Todoform />
+            <Todolist />
+          </TodoContextProvider>
+        </CardContent>
+      </Card>
+    </Container>
   )
 }
 

@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { TodoContext } from '../contexts/TodoContext'
 import Toddoformupdate from './Toddoformupdate'
 
+import Button from '@material-ui/core/Button'
+
 function Tododetails({ todo }) {
   const { removeTodo, isUpdate, setIsUpdate } = useContext(TodoContext)
 
@@ -12,20 +14,24 @@ function Tododetails({ todo }) {
         <>
           <span> {todo.title}</span>
           <span> {todo.status}</span>
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             onClick={() => {
               setIsUpdate(todo.id)
             }}
           >
             Update
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
             onClick={() => {
               removeTodo(todo.id)
             }}
           >
             Delete
-          </button>
+          </Button>
         </>
       )}
     </li>

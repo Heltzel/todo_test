@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { TodoContext } from '../contexts/TodoContext'
 
+import { Button } from '@material-ui/core'
+
 function Toddoformupdate({ todo }) {
   const { setIsUpdate, updateTodo } = useContext(TodoContext)
   const [title, setTitle] = useState(todo.title)
@@ -34,7 +36,9 @@ function Toddoformupdate({ todo }) {
         <option value="doing">doing</option>
         <option value="done">done</option>
       </select>
-      <button>Comfirm</button>
+      <Button variant="contained" type="submit">
+        Comfirm
+      </Button>
     </form>
   )
 }
