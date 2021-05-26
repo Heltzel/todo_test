@@ -1,20 +1,22 @@
 import React, { createContext, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 export const TodoContext = createContext()
 
 const TodoContextProvider = (props) => {
-  const [todos, setTodos] = useState([
-    { id: 1, title: 'title 1', status: 'todo' },
-    { id: 2, title: 'title 2', status: 'doing' },
-    { id: 3, title: 'title 2', status: 'done' },
-  ])
+  const [todos, setTodos] = useState([])
 
-  // const addTodo = ()=>{}
+  const addTodo = (title) => {
+    setTodos([...todos, { id: uuidv4(), title: title, status: 'todo' }])
+  }
   // const updateTodo = ()=>{}
-  // const removeTodo = ()=>{}
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todos) => todos.id !== id))
+  }
 
   return (
-    <TodoContext.Provider value={{ todos }}>
+    <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>
       {props.children}
     </TodoContext.Provider>
   )
