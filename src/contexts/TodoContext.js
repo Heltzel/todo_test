@@ -11,6 +11,11 @@ const TodoContextProvider = (props) => {
     doingStatus: [],
     doneStatus: [],
   })
+  const [currentTodo, setCurrentTodo] = useState({
+    id: null,
+    title: '',
+    status: 'todo',
+  })
 
   useEffect(() => {
     let todoStatus = todos.filter((item) => item.status === 'todo')
@@ -39,6 +44,11 @@ const TodoContextProvider = (props) => {
     setTodos(todos.filter((todos) => todos.id !== id))
   }
 
+  const getTodo = (id) => {
+    let current = todos.find((todo) => todo.id === id)
+    setCurrentTodo(current)
+  }
+
   return (
     <TodoContext.Provider
       value={{
@@ -49,6 +59,8 @@ const TodoContextProvider = (props) => {
         setIsUpdate,
         updateTodo,
         dutyStatus,
+        getTodo,
+        currentTodo,
       }}
     >
       {props.children}

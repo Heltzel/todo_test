@@ -5,11 +5,9 @@ import Button from '@material-ui/core/Button'
 import { TableCell, TableRow } from '@material-ui/core'
 
 function Tododetails({ todo }) {
-  const { removeTodo, isUpdate, setIsUpdate } = useContext(TodoContext)
+  const { removeTodo, setIsUpdate } = useContext(TodoContext)
   return (
     <TableRow>
-      {/* {isUpdate !== todo.id && ( */}
-
       <TableCell align="left">{todo.title}</TableCell>
       <TableCell align="left">{todo.status}</TableCell>
       <TableCell align="left">
@@ -35,7 +33,6 @@ function Tododetails({ todo }) {
           Delete
         </Button>
       </TableCell>
-      {/* )} */}
     </TableRow>
   )
 }

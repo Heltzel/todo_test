@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TodoContext } from '../contexts/TodoContext'
 
 import {
@@ -8,23 +8,32 @@ import {
   Grid,
   Input,
   InputLabel,
-  MenuItem,
   Select,
 } from '@material-ui/core'
 
 function Toddoformupdate() {
-  const { setIsUpdate, updateTodo, isUpdate } = useContext(TodoContext)
-  // const [title, setTitle] = useState(todo.title)
-  // const [status, setStatus] = useState(todo.status)
+  const {
+    setIsUpdate,
+    updateTodo,
+    isUpdate,
+    getTodo,
+    currentTodo,
+  } = useContext(TodoContext)
   const [title, setTitle] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('todo')
 
   console.log(isUpdate)
 
+  useEffect(() => {
+    getTodo(isUpdate)
+    setTitle(currentTodo.title)
+    setStatus(currentTodo.status)
+  }, [isUpdate, getTodo, currentTodo])
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    // const updatedTodo = { id: todo.id, title: title, status: status }
-    // updateTodo(updatedTodo)
+    const updatedTodo = { id: currentTodo.id, title: title, status: status }
+    updateTodo(updatedTodo)
     setIsUpdate(null)
   }
   return (
@@ -48,7 +57,8 @@ function Toddoformupdate() {
         </Grid>
 
         <Grid item xs={12} sm={3}>
-          <FormControl>
+          {/* Warning: findDOMNode is deprecated in StrictMode. findDOMNode was passed an instance of Transition which is inside StrictMode. */}
+          {/* <FormControl>
             <InputLabel htmlFor="updateStatus">Status: </InputLabel>
             <Select
               labelId="updateStatus"
@@ -65,6 +75,26 @@ function Toddoformupdate() {
             <FormHelperText id="my-helper-text2">
               <span>Update your title</span>
             </FormHelperText>
+          </FormControl> */}
+
+          <FormControl>
+            <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+            <Select
+              native
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value)
+              }}
+              inputProps={{
+                name: 'age',
+                id: 'age-native-simple',
+              }}
+            >
+              <option aria-label="None" value="" />
+              <option value="todo">todo</option>
+              <option value="doing">doing</option>
+              <option value="done">done</option>
+            </Select>
           </FormControl>
         </Grid>
 
