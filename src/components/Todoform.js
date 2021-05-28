@@ -42,19 +42,21 @@ function Todoform() {
       <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
         <FormControl>
           <Grid container>
-            <Grid item xs={12} sm={8}>
-              <InputLabel htmlFor="my-input">New Duty</InputLabel>
+            <Grid item xs={12} sm={9}>
+              <InputLabel htmlFor="newTodo">New Duty</InputLabel>
               <Input
-                id="title"
+                id="newTodo"
                 aria-describedby="my-helper-text"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 disabled={!isUpdate ? false : true}
                 error={isSubmit && !title ? true : false}
               />
-              <FormHelperText id="my-helper-text">Required</FormHelperText>
+              <FormHelperText id="my-helper-text">
+                {!isUpdate ? 'Required' : 'Temporarily disabled'}
+              </FormHelperText>
             </Grid>
-            <Grid item xs={12} md={4} style={{ marginTop: '10px' }}>
+            <Grid item xs={12} md={3} style={{ marginTop: '20px' }}>
               <Button
                 variant="contained"
                 type="submit"
@@ -66,7 +68,6 @@ function Todoform() {
           </Grid>
         </FormControl>
       </form>
-      {/* )} */}
     </>
   )
 }
