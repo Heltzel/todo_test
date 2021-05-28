@@ -78,7 +78,7 @@ function Toddoformupdate() {
           </FormControl> */}
 
           <FormControl>
-            <InputLabel htmlFor="age-native-simple">Age</InputLabel>
+            <InputLabel htmlFor="age-native-simple">Status</InputLabel>
             <Select
               native
               value={status}
